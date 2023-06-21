@@ -37,16 +37,6 @@ import { mapActions } from 'vuex'
 export default {
   name: 'TaskForm',
 
-  props: {
-    task: {
-      type: Object,
-      default: () => ({
-        text: null,
-        color: null
-      })
-    }
-  },
-
   data () {
     return {
       colorOptions: ['primary', 'success', 'danger', 'warning', 'info']
@@ -54,6 +44,10 @@ export default {
   },
 
   computed: {
+    task () {
+      return this.$store.state.currentTask
+    },
+
     isEdit () {
       return this.task.id !== undefined
     },
@@ -71,12 +65,10 @@ export default {
 
     onSubmit () {
       if (this.isEdit) {
-        this.updateTask(this.task)
+        this.updateTask()
       } else {
-        this.addTask(this.task)
+        this.addTask()
       }
-      
-      this.$emit('submit')
     },
 
     onColorClick (color) {
