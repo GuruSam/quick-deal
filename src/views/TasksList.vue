@@ -29,9 +29,7 @@ export default {
       task: {
         text: null,
         color: null
-      },
-
-      colorOptions: ['primary', 'success', 'danger', 'warning', 'info']
+      }
     }
   },
 
